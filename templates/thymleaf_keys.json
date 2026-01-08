@@ -1,0 +1,24 @@
+{
+  "supportEmail": "a@gmail.com",
+  "supportPhoneNumber": "324563245676",
+  "businessName": "businessName_prabh",
+  "accountName": "Prabh",
+  "nestedSessionList": [
+    { "paymentType": "CORPORATE" },
+    { "paymentType": "INDIVIDUAL" }
+  ],
+  "tenantName": "xyz",
+  "energyConsumed": "100",
+  "vehicles": {
+    "displayName": "Person A",
+    "vehicleNumber": "xxxxxxx"
+  },
+  "additional_information": [""],
+  "originalPrice": 120,
+  "isFreeDurationApplied": 1,
+  "freeDurationData": {
+    "hours": 1,
+    "minutes": 29
+  },
+  "tax": 10
+}

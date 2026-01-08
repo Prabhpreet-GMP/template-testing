@@ -7,9 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "node app",
     "status": "git status",
-    "generate-thymeleaf": "node app.js",
-    "generate-template": "java -cp ./thymeleaf/target/hello-world-1.0-SNAPSHOT.jar com.example.Automation ./thymeleaf/keys.json ./GMP/s3",
-    "generate": "node app.js && java -cp thymleaf.jar com.example.Automation ./thymeleaf/keys.json ./GMP/s3",
+    "generate-raw": "node app.js",
+    "generate-thymleaf": "node app.js && java -cp thymleaf.jar com.example.Automation ./templates/thymleaf_keys.json ./raw/s3",
     "generate-h": "node ./handlebars/generate.js"
   },
   "author": "",
