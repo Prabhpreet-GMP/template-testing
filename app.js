@@ -197,7 +197,6 @@ fs.readdir("templates/s3", (err, files) => {
     const templateJson = {
       Template: {
         HtmlPart:minf,
-        SubjectPart: utils[`${item}`].replace('TENANT_NAME',config['tenantName']),
         TemplateName: `${item}_EN_${config.prefixName}`
       }
     }

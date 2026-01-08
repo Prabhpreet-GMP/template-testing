@@ -1,4 +1,13 @@
 {
   "user": "Prabhpreet",
-  "hours": 2
+  "hours": 2,
+  "discountName": "prabh_discount",
+  "originalPrice": 300,
+  "discountPrice": 200,
+  "totalAmount": 100,
+  "isFreeDurationApplied": 0,
+  "freeDurationData": {
+    "hours": 2,
+    "minutes": 29
+  }
 }
