@@ -1,0 +1,27 @@
+{
+  "name": "nodeserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "node app",
+    "status": "git status",
+    "generate-thymeleaf": "node app.js",
+    "generate-template": "java -cp ./thymeleaf/target/hello-world-1.0-SNAPSHOT.jar com.example.Automation ./thymeleaf/keys.json ./GMP/s3",
+    "generate": "node app.js && java -cp thymleaf.jar com.example.Automation ./thymeleaf/keys.json ./GMP/s3",
+    "generate-h": "node ./handlebars/generate.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "handlebars": "^4.7.8",
+    "html-minifier": "^4.0.0",
+    "request": "^2.88.2",
+    "rimraf": "^3.0.2",
+    "shelljs": "^0.8.5",
+    "undici": "^5.26.5",
+    "yargs": "^17.6.0"
+  }
+}

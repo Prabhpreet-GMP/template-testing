@@ -1,0 +1,297 @@
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <style type="text/css">
+    @page {
+      width: 700px;
+    }
+
+    .float-right {
+      float: right;
+    }
+  </style>
+</head>
+
+<body style="font-family: sans-serif; color: #06395b">
+  <div>
+    <div style="
+          width: 100%;
+          margin: auto;
+          max-width: 600px;
+          background-color: white;
+        ">
+      <div style="text-align: center">
+        <img width="200" src="https://s3.eu-central-1.amazonaws.com/apcoa-assets/images/apcoa-flow-logo-german.png"
+          alt="Flow Logo" />
+      </div>
+      <div style="
+            padding-left: 5%;
+            font-size: 8px;
+            padding-right: 5%;
+            padding: 2%;
+          ">
+        <p th:if="${transactionStatus == 'SUCCESSFUL'}">
+          <img style="vertical-align: middle" width="18" height="18"
+            src="https://s3.eu-central-1.amazonaws.com/apcoa-assets/images/valid.png" alt="Successful" />&nbsp;&nbsp;
+            Die Zahlung für Ihren Parkvorgang war erfolgreich
+        </p>
+        <p th:if="${transactionStatus == 'FAILED'}">
+          <img style="vertical-align: middle" width="18" height="18"
+            src="https://s3.eu-central-1.amazonaws.com/apcoa-assets/images/icn_error_red.png"
+            alt="Failed" />&nbsp;&nbsp;Die Zahlung für Ihren Parkvorgang war nicht
+          erfolgreich
+        </p>
+        <p th:if="${transactionStatus == 'PENDING'}">
+          <img style="vertical-align: middle" width="18" height="18"
+            src="https://s3.eu-central-1.amazonaws.com/apcoa-assets/images/icn_error_red.png"
+            alt="Failed" />&nbsp;&nbsp;Payment pending, Please open the FLOW app on your
+          mobile and complete the payment
+        </p>
+        <hr />
+        <p>
+          <b>Kunden-Nr:</b> <span th:text="${customerId}"></span>
+          <span style="float: right"><b>Rechnungsdatum:</b> <span th:text="${invoiceDate}"></span></span>
+        </p>
+        <p>
+          <span style="float: right"><b>Rechnungsnr.:</b> <span th:text="${invoiceNumber}"></span></span>
+        </p>
+        <p th:if="${not #strings.isEmpty(customerName)}">
+          <b>Name:</b> <span th:text="${customerName}"></span>
+        </p>
+        <p th:if="${#strings.toLowerCase(profileName) == 'privat' && not #strings.isEmpty(address)}">
+          <b>Adresse:</b> <span th:text="${address}"></span>
+        </p>
+
+        <div th:if="${#strings.toLowerCase(profileName) != 'privat'}">
+          <p>
+            <b th:if="${not #strings.isEmpty(businessName)}" th:text="${businessName}"></b>
+          </p>
+          <p>
+            <span th:if="${not #strings.isEmpty(businessAddress)}" th:text="${businessAddress}"></span>
+          </p>
+
+          <p th:if="${not #strings.isEmpty(costCenterId)}">
+            <b>Cost Center ID:</b>
+            <span th:text="${costCenterId}"></span>
+          </p>
+          <p th:if="${not #strings.isEmpty(vatId)}">
+            <b>VAT ID:</b>
+            <span th:text="${vatId}"></span>
+          </p>
+        </div>
+
+        <hr style="border-color: #f5f5f5; border-width: 0.5px" />
+        <p>
+          <b>Beschreibung:</b>
+          <span th:text="${parkingName}"> </span>
+        </p>
+        <hr style="border-color: #f5f5f5; border-width: 0.5px" />
+        <p>
+          <img th:src="@{${accessTypeImage}}" src="${accessTypeImage}" alt="" style="width: 20px; height: 20px" />
+          <span style="padding-left: 1%; position: relative; bottom: 4px" th:text="${externalIdentifier}"></span>
+        </p>
+
+        <hr style="border-color: #f5f5f5; border-width: 0.5px" />
+        <p><b>Transaktion:</b> <span th:text="${transactionId}"></span></p>
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse">
+          <tbody>
+            <tr>
+              <td style="
+                    width: 9px;
+                    height: 9px;
+                    background: #06395b;
+                    border-radius: 50%;
+                    border-collapse: separate;
+                  "></td>
+              <td th:text="${sessionStart}" style="
+                    padding-left: 10px;
+                    font-family: Arial, sans-serif;
+                    font-size: 11px;
+                    line-height: 1.3;
+                  "></td>
+            </tr>
+            <tr>
+              <td style="width: 1px; height: 25px">
+                <div style="
+                      background: #b3b3b3;
+                      height: 25px;
+                      width: 1px;
+                      margin: 0 auto;
+                    "></div>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 9px; height: 9px; background: #06395b"></td>
+              <td th:text="${sessionEnd}" style="
+                    padding-left: 10px;
+                    font-family: Arial, sans-serif;
+                    font-size: 11px;
+                  "></td>
+            </tr>
+          </tbody>
+        </table>
+        <hr style="border-color: #f5f5f5; border-width: 0.5px" />
+        <p style="padding-top: 2%; padding-bottom: 2%">
+          <img src="https://s3.eu-central-1.amazonaws.com/apcoa-assets/images/stopwatch.png" alt=""
+            style="width: 20px; height: 20px" /><span style="padding-left: 1%; position: relative; bottom: 4px"
+            th:text="${duration}"></span>
+        </p>
+        <hr style="border-color: #f5f5f5; border-width: 0.5px" />
+        <div style="margin-top: -3%">
+          <p style="margin-top: 5%; display: inline-block">
+            <img th:src="@{${profileNameImage}}" src="${profileNameImage}" alt="" style="width: auto; height: 15px" />
+            <span style="padding-left: 1%; position: relative; bottom: 4px" th:text="${profileName}"></span>
+          </p>
+          <p class="m-t-5 float-right" style="margin-top: 5%">
+            <span th:if="${isCorporatePay}" style="background-color: #06395b; padding: 4px; color: #ffffff">
+              Paid by corporate
+            </span>
+            <img th:unless="${isCorporatePay}" style="height: 20px" th:src="@{${cardTypeImage}}" src="${cardTypeImage}"
+              alt="" />
+            <span th:unless="${isCorporatePay}" style="position: relative; bottom: 6px" th:text="${cardNumber}"></span>
+          </p>
+        </div>
+        <hr style="border-color: #f5f5f5; border-width: 0.5px" />
+
+        <div th:if="${discountName}">
+          <p style="display: inline-block">
+            <img src="https://s3.eu-central-1.amazonaws.com/apcoa-assets/images/discount.png" alt
+              style="height: 20px; width: 20px" />
+            <span style="position: relative; bottom: 4px; margin-left: 8px"><b>Werbe-Code</b></span>
+          </p>
+          <p th:text="${discountName}" style="float: right"></p>
+        </div>
+
+        <div style="padding: 0.5% 2%; background-color: #f5f5f5">
+          <p>
+            <span>Parktarif (Total EUR ohne MwSt.) :</span><span style="float: right"
+              th:text="'&euro; ' + ${originalPrice}">
+            </span>
+            <div th:if="${isFreeDurationApplied}" style="
+            font-family: Arial, sans-serif;
+              font-size: 8px;
+              color: #272727;"
+              th:text="${'*Free ' +
+                (freeDurationData.hours > 0 ? freeDurationData.hours + ' ' + (freeDurationData.hours > 1 ? 'hours' : 'hour') : '') +
+                (freeDurationData.hours > 0 && freeDurationData.minutes > 0 ? ' and ' : '') +
+                (freeDurationData.minutes > 0 ? freeDurationData.minutes + ' ' + (freeDurationData.minutes > 1 ? 'mins' : 'min') : '') + 
+                ' included'
+              }">
+            </div>
+          </p>
+          <p th:if="${convenienceFee != null and convenienceFee != '' and convenienceFee != '0.00'}">
+            <span>Serviceentgelt (ohne MwSt.) :</span>
+            <span style="float: right" th:text="'&euro; '+${convenienceFee}"></span>
+          </p>
+          <div th:each="additionalCharge : ${additionalCharges}">
+            <p th:if="${additionalCharge.chargeType=='Pass Incentive'}">
+               <span> Bereits durch Park-Flat bezahlt :</span>
+               <span style="float: right" th:text="'&euro; ' +${additionalCharge.amountInCents}"></span>
+            </p>
+          </div>
+          <div
+            th:if="${discountWithoutVat != null and discountWithoutVat != '' and discountWithoutVat != '0.00'}">
+            <p>
+              Rabatt (ohne MwSt.) :
+              <span th:text="'&euro; ' +${discountWithoutVat}" style="float: right"></span>
+            </p>
+          </div>
+          <p th:if="${totalVatWithoutDiscount != null and totalVatWithoutDiscount != '' and totalVatWithoutDiscount != '0.00'}">
+            <span>MwSt. (<span th:text="${taxRate}+'%'"></span>) :</span>
+            <span th:text="'&euro; ' +${totalVatWithoutDiscount}" style="float: right"></span>
+          </p>
+        </div>
+        <div style="padding: 0.5% 2%; background-color: #f5f5f5; margin: 4px 0px">
+          <div>
+            <p>
+              <b>Gesamt (inkl. <span th:text="${taxRate}+'% '"></span>MwSt.)
+                <span th:text="'&euro; ' +${totalAmount}" style="float: right"></span></b>
+            </p>
+          </div>
+          <div th:if="${not #lists.isEmpty(refundList)}">
+            <p th:each="refund : ${refundList}">
+              <span style="float: left"><b>Rückerstattungsbetrag:</b></span><span style="float: right"
+                th:text="'&euro; ' +${refund}"></span><br />
+            </p>
+          </div>
+        </div>
+
+        <div style="font-size: 12px" th:if="${is_special_tariff_applicable}">
+          <div>
+            <p style="color: #434343">
+              *Für Ihren Parkvorgang gelten Sonderkonditionen.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size: 5px" th:if="${mandateReference==null}">
+            <div>
+              Der Betrag wird über das bei APCOA FLOW hinterlegte Zahlungsmittel abgebucht - bitte nicht überweisen.
+            </div>
+          </div>
+          <div style="font-size: 5px" th:unless="${mandateReference==null}">
+            <p style="margin-bottom: 0">
+              Der Betrag wird über das bei APCOA FLOW hinterlegte Zahlungsmittel abgebucht - bitte nicht überweisen. Für den Fall,
+              dass Sie sich für das SEPA-Lastschriftverfahren entschieden
+              haben, ziehen wir den Betrag innerhalb von zwei Bankarbeitstagen
+              unter Angabe der Mandatsreferenz [<span th:text="${mandateReference}"></span>] ein. Unsere Gläubiger ID
+              lautet: DE34ZZZ00000566807
+            </p>
+          </div>
+        </div>
+      </div>
+      <div style="
+            padding: 2%;
+            background-color: #78b51a;
+            width: 96%;
+            font-size: 8px;
+          ">
+          <table style="width: 100%;">
+            <tbody>
+              <tr>
+                <td style="vertical-align:top">
+                  <div>
+                    <a style="
+                        font-size: 10px;
+                        text-decoration: none;
+                        color: #ffffff;"
+                        target="__blank" rel="noopener noreferrer" href="https://flow.apcoa.de/FAQ">
+                        FAQ/ Hilfe
+                                                                                            </a>
+                  </div>
+                </td>
+                <td align="right">
+                    <div>
+                      <b style="font-size: 8px; color: white">APCOA Deutschland GmbH</b><br />
+                      <p style="font-size: 6px; color: #ffffff">Postfach 23 04 63</p>
+                      <p style="font-size: 6px; color: #ffffff">
+                        D-70624 Stuttgart (Flughafen)
+                      </p>
+                      <p style="font-size: 6px; color: #ffffff">
+                        Geschäftsführerin: Katrin Teichert
+                      </p>
+                      <p style="font-size: 6px; color: #ffffff">
+                        Registergericht: Amtsgericht Stuttgart
+                      </p>
+                      <p style="font-size: 6px; color: #ffffff">
+                        Registernummer: HRB 221831
+                      </p>
+                      <p style="font-size: 6px; color: #ffffff">
+                        Umsatzsteuer-Identifikationsnummer: DE227818589 (gemäß § 27 a
+                        Umsatzsteuergesetz)
+                      </p>
+                    </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
