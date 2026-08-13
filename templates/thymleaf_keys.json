@@ -1,24 +1,14 @@
 {
-  "supportEmail": "a@gmail.com",
-  "supportPhoneNumber": "324563245676",
-  "businessName": "businessName_prabh",
-  "accountName": "Prabh",
-  "nestedSessionList": [
-    { "paymentType": "CORPORATE" },
-    { "paymentType": "INDIVIDUAL" }
+  "parkerName": "John Doe",
+  "parkingNames": [
+    "Downtown Event Garage",
+    "City Center Lot",
+    "Airport Long Stay"
   ],
-  "tenantName": "xyz",
-  "energyConsumed": "100",
-  "vehicles": {
-    "displayName": "Person A",
-    "vehicleNumber": "xxxxxxx"
-  },
-  "additional_information": [""],
-  "originalPrice": 120,
-  "isFreeDurationApplied": 1,
-  "freeDurationData": {
-    "hours": 1,
-    "minutes": 29
-  },
-  "tax": 10
+  "totalParkingCount": 3,
+  "qrImage": "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=PERMIT-QR-001",
+  "externalId": "PERMIT-QR-001",
+  "companyName": "GMP Parking",
+  "appleWalletLink": "https://permit.getmyparking.com/apple-wallet/pass",
+  "uri": "https://permit.getmyparking.com/app/v2"
 }

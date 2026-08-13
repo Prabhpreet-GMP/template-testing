@@ -1,13 +1,11 @@
 {
-  "user": "Prabhpreet",
-  "hours": 2,
-  "discountName": "prabh_discount",
-  "originalPrice": 300,
-  "discountPrice": 200,
-  "totalAmount": 100,
-  "isFreeDurationApplied": 0,
-  "freeDurationData": {
-    "hours": 2,
-    "minutes": 29
-  }
+  "emailAddress": "john.doe@example.com",
+  "customerId": "CUST12345",
+  "sessionId": "SESSION67890",
+  "permitMasterAllocationId": "PERMIT54321",
+  "parkingName": "Downtown Parking Plaza",
+  "parkingId": "PARK98765",
+  "os": "iOS 17.4",
+  "appVersion": "5.12.0",
+  "message": "Unable to start charging session from the app."
 }

@@ -1,0 +1,42 @@
+[
+    {
+        "id": 2,
+        "backendParams": [
+            "${parkerName}",
+            "${parkingNames[0]}",
+            "', ' + (${totalParkingCount} - 1) + ' more'",
+            "${externalId}",
+            "${companyName}",
+            "${location}"
+        ],
+        "languages": [
+            {
+                "code": "EN",
+                "url": "./GMP/s3/PaymentSuccess_EN_AT.html.html",
+                "name": "sample EN PaymentSuccess_EN_AT.html templates"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "backendParams": [],
+        "languages": [
+            {
+                "code": "EN",
+                "url": "./GMP/ses/AutoRenewalAlert.html",
+                "name": "sample EN AutoRenewalAlert templates"
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "backendParams": [],
+        "languages": [
+            {
+                "code": "EN",
+                "url": "./GMP/ses/Welcome.html",
+                "name": "sample EN Welcome templates"
+            }
+        ]
+    }
+]
